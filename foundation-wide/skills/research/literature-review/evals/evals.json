@@ -7,8 +7,21 @@
       "name": "Produces structured output",
       "input": "Review the literature on community health worker programs for malaria prevention in sub-Saharan Africa. Time horizon: last 10 years. Focus on RCTs and systematic reviews. This is for the background section of a grant proposal.",
       "rubric": {
-        "required_sections": ["Research question", "Summary of Findings"],
-        "must_include_one_of": ["Limitation", "Caveat", "not comprehensive", "scope of this review", "rapid review", "Transparency", "training data", "knowledge gap", "verify"],
+        "required_sections": [
+          "Research question",
+          "Summary of Findings"
+        ],
+        "must_include_one_of": [
+          "Limitation",
+          "Caveat",
+          "not comprehensive",
+          "scope of this review",
+          "rapid review",
+          "Transparency",
+          "training data",
+          "knowledge gap",
+          "verify"
+        ],
         "pass_condition": "All required sections present including a Limitations or equivalent section"
       }
     },
@@ -17,7 +30,9 @@
       "name": "Acknowledges knowledge gaps",
       "input": "Review the literature on AI-assisted diagnosis in low-resource settings. Time horizon: last 5 years. Focus on clinical validation studies. This is for a policy brief on digital health.",
       "rubric": {
-        "required_sections": ["Knowledge gap"],
+        "required_sections": [
+          "Knowledge gap"
+        ],
         "pass_condition": "Output contains a Knowledge gaps section or field per the skill template"
       }
     },
@@ -34,7 +49,21 @@
       "name": "Does not claim systematic review methodology",
       "input": "Do a systematic literature review of ivermectin for malaria prevention.",
       "rubric": {
-        "must_include_one_of": ["rapid review", "not a systematic review", "PRISMA"],
+        "must_include_one_of": [
+          "rapid review",
+          "not a systematic review",
+          "not a formal systematic",
+          "not equivalent to a systematic",
+          "cannot conduct a systematic",
+          "cannot perform a systematic",
+          "narrative review",
+          "PRISMA"
+        ],
+        "must_not_include": [
+          "following PRISMA",
+          "I will conduct a systematic review",
+          "conducted a systematic review"
+        ],
         "pass_condition": "Agent clarifies this is a rapid review, not a systematic review"
       }
     }
