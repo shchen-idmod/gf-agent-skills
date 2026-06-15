@@ -1,0 +1,11 @@
+{
+  "name": "foundation-wide-skills",
+  "version": "1.0.0",
+  "description": "Foundation-wide skills available to all GF staff.",
+  "skills": [
+    "./skills/research/literature-review",
+    "./skills/communications/grant-writing",
+    "./skills/operations/meeting-summarization",
+    "./skills/data/pipeline-documentation"
+  ]
+}

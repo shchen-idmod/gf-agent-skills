@@ -1,0 +1,54 @@
+[
+  {
+    "id": "test-001",
+    "description": "Standard employee record with full PII fields",
+    "input": {
+      "employee": {
+        "name": "Jane Doe",
+        "dob": "1900-01-01",
+        "ssn": "000-00-0001",
+        "employer_id": "TEST-EMP-001",
+        "email": "jane.doe@example-test.com",
+        "api_key": "sk-test-XXXXXXXXXXXXXXXXXXXX",
+        "password": "TEST_PASSWORD_PLACEHOLDER"
+      }
+    },
+    "expected": {
+      "pii_detected": true,
+      "fields_flagged": ["dob", "ssn", "employer_id", "api_key", "password"],
+      "risk_level": "high"
+    }
+  },
+  {
+    "id": "test-002",
+    "description": "Record with no sensitive data",
+    "input": {
+      "employee": {
+        "department": "Engineering",
+        "role": "Developer",
+        "location": "Seattle"
+      }
+    },
+    "expected": {
+      "pii_detected": false,
+      "fields_flagged": [],
+      "risk_level": "none"
+    }
+  },
+  {
+    "id": "test-003",
+    "description": "Partial PII - only email and name",
+    "input": {
+      "employee": {
+        "name": "John Smith",
+        "email": "john.smith@example-test.com",
+        "department": "Finance"
+      }
+    },
+    "expected": {
+      "pii_detected": true,
+      "fields_flagged": ["email"],
+      "risk_level": "medium"
+    }
+  }
+]

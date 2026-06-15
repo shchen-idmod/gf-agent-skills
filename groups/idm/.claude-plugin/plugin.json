@@ -1,0 +1,11 @@
+{
+  "name": "idm-skills",
+  "version": "1.1.0",
+  "description": "IDM group skills scoped to disease modeling and epidemiology research.",
+  "skills": [
+    "./skills/disease-modeling-review",
+    "./skills/software-tools/idm-pkg-install",
+    "./skills/software-tools/python-code-fixer",
+    "./skills/software-tools/python-code-reviewer"
+  ]
+}

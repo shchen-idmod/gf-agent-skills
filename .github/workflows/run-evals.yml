@@ -1,0 +1,54 @@
+name: Run Skill Evals
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'foundation-wide/skills/**'
+      - 'groups/**/skills/**'
+  workflow_dispatch:        # allow manual trigger from Actions tab
+    inputs:
+      plugin:
+        description: 'Plugin to eval (leave blank for all)'
+        required: false
+        default: ''
+      skill:
+        description: 'Skill to eval (leave blank for all)'
+        required: false
+        default: ''
+
+jobs:
+  run-evals:
+    name: Run evals against Claude
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install anthropic pyyaml
+
+      - name: Run evals
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          ARGS=""
+          if [ -n "${{ github.event.inputs.plugin }}" ]; then
+            ARGS="$ARGS --plugin ${{ github.event.inputs.plugin }}"
+          fi
+          if [ -n "${{ github.event.inputs.skill }}" ]; then
+            ARGS="$ARGS --skill ${{ github.event.inputs.skill }}"
+          fi
+          python scripts/run_evals.py $ARGS --output eval-results.json
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-results
+          path: eval-results.json

@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# AI planning artifacts (superpowers plugin)
+docs/superpowers/
+
+# Packaging output
+dist/
+
+# scan_repo_skills.py output
+repo_skills.html
+*_skills.html
+
+# Eval outputs and real fixtures (may contain PII)
+eval-results.json
+*.eval-results.json
+*.eval.log
+fixtures/real/
+.env
+.env.local
+*.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.idea/
+.vscode/
+*.swp

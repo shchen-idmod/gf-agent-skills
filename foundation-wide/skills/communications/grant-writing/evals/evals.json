@@ -1,0 +1,70 @@
+{
+  "skill": "grant-writing",
+  "version": "1.0.0",
+  "evals": [
+    {
+      "id": "grant-001",
+      "name": "Asks for missing context before writing",
+      "description": "When the user gives a vague request with no funder or topic details, the agent should ask clarifying questions rather than immediately producing an outline.",
+      "input": "Help me write a grant proposal.",
+      "rubric": {
+        "must_include_one_of": [
+          "funder",
+          "what is the",
+          "could you share",
+          "which organization",
+          "what program"
+        ],
+        "pass_condition": "Agent asks at least one clarifying question about funder, topic, or intended use before producing content"
+      }
+    },
+    {
+      "id": "grant-002",
+      "name": "Produces all logical framework sections",
+      "description": "Given a reasonably detailed proposal brief, the output should include all seven logical framework elements.",
+      "input": "Help me outline a grant proposal to the Gates Foundation for a malaria vaccine distribution program in sub-Saharan Africa. We're requesting $2M over 3 years to train community health workers and distribute vaccines in 3 countries.",
+      "rubric": {
+        "required_sections": ["Problem", "Gap", "Approach", "Theory of change", "Evidence"],
+        "must_include_groups": [
+          ["Evaluation", "Monitoring", "M&E", "measure success", "measure impact", "Assessment"],
+          ["Feasibility", "feasible", "team capacity", "well-positioned", "Team and Feasibility", "organizational capacity"]
+        ],
+        "pass_condition": "All seven logical framework elements are present in the output, either as explicit headings or clearly addressed in the narrative"
+      }
+    },
+    {
+      "id": "grant-003",
+      "name": "Flags weak or missing sections",
+      "description": "When given a draft that is missing key elements, the agent should explicitly flag the gaps rather than silently filling them in.",
+      "input": "Can you review this grant proposal draft? Here it is: 'We will train 500 community health workers in Kenya to improve maternal health outcomes. Our team has done this work for 10 years. We are requesting $500,000.'",
+      "rubric": {
+        "must_include_one_of": [
+          "missing",
+          "no evidence",
+          "theory of change",
+          "evaluation",
+          "problem statement",
+          "gap",
+          "strengthen"
+        ],
+        "pass_condition": "Agent explicitly identifies at least 2 missing or weak elements from the logical framework"
+      }
+    },
+    {
+      "id": "grant-004",
+      "name": "Flags budget as out of scope",
+      "description": "When the user asks for help with budget or financial sections, the agent should acknowledge this is out of scope and redirect appropriately.",
+      "input": "Can you help me fill in the budget justification section of my grant proposal? We need to explain why we're spending $200,000 on personnel.",
+      "rubric": {
+        "must_include_one_of": [
+          "out of scope",
+          "grants management",
+          "finance team",
+          "budget sections",
+          "financial"
+        ],
+        "pass_condition": "Agent clearly states that budget and financial sections are out of scope and suggests consulting the grants management team"
+      }
+    }
+  ]
+}
