@@ -108,6 +108,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) and [docs/SKILL_TEMPLATE.md](docs/SKILL_T
 gf-agent-skills/
 ├── .claude-plugin/
 │   └── marketplace.json              ← Claude Code marketplace registry
+├── requirements.txt
+├── .env.example
 │
 ├── foundation-wide/                  ← Skills for all GF staff
 │   ├── .claude-plugin/plugin.json
@@ -115,21 +117,29 @@ gf-agent-skills/
 │       ├── research/
 │       │   └── literature-review/
 │       │       ├── SKILL.md
-│       │       ├── evals/evals.json
-│       │       └── scripts/          ← optional helper scripts
+│       │       └── evals/evals.json
 │       ├── communications/
 │       │   └── grant-writing/
+│       │       ├── SKILL.md
+│       │       └── evals/evals.json
 │       ├── operations/
 │       │   └── meeting-summarization/
+│       │       ├── SKILL.md
+│       │       └── evals/evals.json
 │       ├── data/
 │       │   └── pipeline-documentation/
+│       │       ├── SKILL.md
+│       │       └── evals/evals.json
 │       └── learning/                 ← empty, ready for contributions
 │
 ├── groups/                           ← Team-scoped skills
 │   ├── idm/
 │   │   ├── .claude-plugin/plugin.json
+│   │   ├── README.md
 │   │   └── skills/
 │   │       ├── disease-modeling-review/
+│   │       │   ├── SKILL.md
+│   │       │   └── evals/evals.json
 │   │       └── software-tools/
 │   │           ├── python-code-reviewer/
 │   │           ├── python-code-fixer/
@@ -142,10 +152,15 @@ gf-agent-skills/
 │
 ├── scripts/
 │   ├── deploy.py                     ← validate or package for Claude.ai
-│   └── validate_skill.py             ← also runs in CI on every PR
+│   ├── validate_skill.py             ← also runs in CI on every PR
+│   ├── run_evals.py                  ← run evals against a live Claude model
+│   ├── scan_repo_skills.py           ← generate skills browsing UI
+│   └── utils.py                      ← shared PII masking and fixture utilities
 │
 └── docs/
-    ├── GOVERNANCE.md
+    ├── EVALS.md
     ├── SKILL_TEMPLATE.md
+    ├── SKILL_FOLDER_TEMPLATE.md
+    ├── PLUGIN_TEMPLATE.md
     └── claude-ai-deployment.md
 ```
