@@ -1,11 +1,11 @@
 {
   "name": "gf-foundation-skills",
   "owner": {
-    "name": "BMGF AI Skills",
-    "email": "bmgf-ai-skills@gatesfoundation.org"
+    "name": "Gates Foundation AI Skills",
+    "email": "gf-ai-skills@gatesfoundation.org"
   },
   "metadata": {
-    "description": "A governed catalog of reusable AI skills for the Bill & Melinda Gates Foundation.",
+    "description": "A governed catalog of reusable AI skills for the Gates Foundation.",
     "version": "1.0.0"
   },
   "plugins": [

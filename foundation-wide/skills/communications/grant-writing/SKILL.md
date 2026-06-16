@@ -1,7 +1,7 @@
 ---
 name: grant-writing
 description: "Use this skill when the user wants to structure, draft, or review a grant proposal. Triggers include: 'help me write a grant', 'review my proposal', 'is this aligned to the funder', 'help with the background section', or requests to improve narrative logic of a funding application."
-owner: bmgf-ai-skills@gatesfoundation.org
+owner: gf-ai-skills@gatesfoundation.org
 version: "1.0.0"
 ---
 

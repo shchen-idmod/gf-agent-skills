@@ -1,7 +1,7 @@
 ---
 name: meeting-summarization
 description: "Use this skill when the user wants to summarize a meeting, extract action items, or create a decision record. Triggers include: 'summarize this meeting', 'extract the action items', 'what were the key decisions', or when a transcript or notes are pasted and a structured output is needed."
-owner: bmgf-ai-skills@gatesfoundation.org
+owner: gf-ai-skills@gatesfoundation.org
 version: "1.0.0"
 ---
 

@@ -3,7 +3,7 @@ name: python-code-reviewer
 description: "Reviews Python files for bugs, security issues, and code quality. Use when asked to review code, check before a PR, or audit .py files. Writes a structured REVIEW.md with findings."
 license: MIT
 allowed-tools: Read, Grep, Glob, Write, Bash, PowerShell
-owner: bmgf-ai-skills@gatesfoundation.org
+owner: gf-ai-skills@gatesfoundation.org
 version: "1.0.0"
 ---
 

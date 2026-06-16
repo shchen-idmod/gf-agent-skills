@@ -1,7 +1,7 @@
 ---
 name: literature-review
 description: "Use this skill when the user wants to search, evaluate, and synthesize academic or grey literature on a research topic. Triggers include: 'review the literature on X', 'summarize what we know about Y', 'what does the evidence say about Z', or requests for a background section for a grant or report."
-owner: bmgf-ai-skills@gatesfoundation.org
+owner: gf-ai-skills@gatesfoundation.org
 version: "1.0.0"
 ---
 

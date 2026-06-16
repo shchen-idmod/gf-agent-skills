@@ -1,7 +1,7 @@
 ---
 name: disease-modeling-review
 description: "Use this skill when the user wants to review or critique a disease model. Triggers include: 'review this model structure', 'check my parameterization', 'does this calibration make sense', or when IDM researchers share model code or outputs and want structured scientific feedback."
-owner: bmgf-ai-skills@gatesfoundation.org
+owner: gf-ai-skills@gatesfoundation.org
 version: "1.0.0"
 ---
 

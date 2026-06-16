@@ -2,7 +2,7 @@
 name: python-code-fixer
 description: "Use this skill when applying fixes to Python 3 code review findings from REVIEW.md. Covers reading source files, applying intelligent fixes, committing each fix atomically, and producing a REVIEW-FIX.md report. Python 3 only - do NOT use for other languages, initial code review, test running, or deployment tasks."
 allowed-tools: Read, Edit, Write, Grep, Glob, Bash, PowerShell
-owner: bmgf-ai-skills@gatesfoundation.org
+owner: gf-ai-skills@gatesfoundation.org
 version: "1.0.0"
 ---
 

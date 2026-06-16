@@ -21,7 +21,7 @@ Reusable Claude skills scoped to Institute for Disease Modeling (IDM) workflows 
 
 | Role | Contact |
 |---|---|
-| Group owner | bmgf-ai-skills@gatesfoundation.org |
+| Group owner | gf-ai-skills@gatesfoundation.org |
 | Reviewer / team lead | *(to be assigned)* |
 
 ## Contributing

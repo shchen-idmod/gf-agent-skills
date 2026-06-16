@@ -1,7 +1,7 @@
 ---
 name: pipeline-documentation
 description: "Use this skill when the user wants to document a data pipeline. Triggers include: 'document this pipeline', 'write up what this ETL does', 'generate docs for this script', or when pipeline code or a description is provided and readable documentation is needed for handoff or onboarding."
-owner: bmgf-ai-skills@gatesfoundation.org
+owner: gf-ai-skills@gatesfoundation.org
 version: "1.0.0"
 ---
 

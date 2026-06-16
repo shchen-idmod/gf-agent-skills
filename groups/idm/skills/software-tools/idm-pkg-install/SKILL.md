@@ -10,7 +10,7 @@ description: |
   and mode based on what the user wants.
 argument-hint: "[pypi|github-url|local-path] [dev|prod|requirements]"
 allowed-tools: Bash, Read, Edit, Glob, Grep
-owner: bmgf-ai-skills@gatesfoundation.org
+owner: gf-ai-skills@gatesfoundation.org
 version: "1.0.0"
 ---
 
