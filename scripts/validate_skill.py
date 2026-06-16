@@ -88,7 +88,7 @@ def validate_evals(skill_dir: Path, fm: dict):
         errors.append(f"[{skill_dir.name}] evals/evals.json must have a non-empty 'evals' array")
     else:
         for i, ev in enumerate(data["evals"]):
-            for req in ["id", "name", "input", "rubric"]:
+            for req in ["id", "name", "prompt", "rubric"]:
                 if req not in ev:
                     errors.append(f"[{skill_dir.name}] evals[{i}] missing field '{req}'")
 

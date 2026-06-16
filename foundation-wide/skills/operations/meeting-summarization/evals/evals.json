@@ -1,12 +1,11 @@
 {
-  "skill": "meeting-summarization",
-  "version": "1.0.0",
+  "skill_name": "meeting-summarization",
   "evals": [
     {
       "id": "meeting-001",
       "name": "Extracts action items with owners and deadlines",
       "description": "When a transcript contains clearly assigned tasks, the agent should extract them with the named owner and any stated deadline.",
-      "input": "Here are my meeting notes: 'John will send the updated budget to Sarah by Friday. Maria agreed to draft the partner communication by end of next week. The team decided to delay the launch by two weeks. No decision yet on the venue.'",
+      "prompt": "Here are my meeting notes: 'John will send the updated budget to Sarah by Friday. Maria agreed to draft the partner communication by end of next week. The team decided to delay the launch by two weeks. No decision yet on the venue.'",
       "rubric": {
         "required_sections": ["Action Items", "Decisions", "Open Questions"],
         "must_include_all": ["John", "Maria", "Friday"],
@@ -17,7 +16,7 @@
       "id": "meeting-002",
       "name": "Distinguishes decisions from open discussion",
       "description": "The agent should correctly separate things that were decided from things that were merely discussed.",
-      "input": "Transcript: 'We talked a lot about whether to expand to three new countries next year. Some people were in favor, others wanted to wait. In the end we agreed to pilot in one country first. We also discussed budget timing but did not reach a conclusion.'",
+      "prompt": "Transcript: 'We talked a lot about whether to expand to three new countries next year. Some people were in favor, others wanted to wait. In the end we agreed to pilot in one country first. We also discussed budget timing but did not reach a conclusion.'",
       "rubric": {
         "must_include_one_of": ["pilot in one country", "pilot one country", "pilot in a single", "single country", "one country first", "pilot first", "pilot program"],
         "must_not_include": ["decided to expand to three", "agreed to expand to three"],
@@ -28,7 +27,7 @@
       "id": "meeting-003",
       "name": "Flags commitments to external parties",
       "description": "For external meetings, the agent should specifically call out commitments made to partners or grantees.",
-      "input": "Meeting notes from partner call with Nairobi Health Institute: 'We promised to send them the data sharing agreement by Wednesday. They will provide updated enrollment numbers by month end. We said we would schedule a follow-up call in 6 weeks.'",
+      "prompt": "Meeting notes from partner call with Nairobi Health Institute: 'We promised to send them the data sharing agreement by Wednesday. They will provide updated enrollment numbers by month end. We said we would schedule a follow-up call in 6 weeks.'",
       "rubric": {
         "must_include_one_of": ["data sharing agreement", "Wednesday", "commitment"],
         "pass_condition": "Agent captures all three commitments and flags them as external commitments"
@@ -38,7 +37,7 @@
       "id": "meeting-004",
       "name": "Flags ambiguous content rather than fabricating details",
       "description": "When notes are incomplete or vague, the agent should flag unclear items rather than guessing.",
-      "input": "Quick notes: 'Discussed Q3 targets. Tom to follow up. Agreed on the thing from last time. Need to check with legal. Budget approved.'",
+      "prompt": "Quick notes: 'Discussed Q3 targets. Tom to follow up. Agreed on the thing from last time. Need to check with legal. Budget approved.'",
       "rubric": {
         "must_include_one_of": ["unclear", "ambiguous", "flagged", "context needed"],
         "pass_condition": "Agent flags at least 2 ambiguous items (e.g. 'the thing from last time', unspecified Q3 targets) rather than fabricating details"

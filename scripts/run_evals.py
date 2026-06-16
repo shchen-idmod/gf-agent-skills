@@ -268,7 +268,7 @@ def run_eval(
 ) -> dict:
     eval_id    = eval_case["id"]
     eval_name  = eval_case["name"]
-    input_text = eval_case["input"]
+    input_text = eval_case["prompt"]
 
     # Resolve rubric — supports new `rubric` key, nested `expected.rubric`, and legacy flat `expected`
     rubric = eval_case.get("rubric") or {}
@@ -307,7 +307,7 @@ def run_eval(
             "status":        status,
             "reasons":       reasons,
             "elapsed_s":     elapsed,
-            "input":         input_text,
+            "prompt":        input_text,
             "response":      safe_response,
             "pass_condition": rubric.get("pass_condition", "")
         }
@@ -320,7 +320,7 @@ def run_eval(
             "status":    ERROR,
             "reasons":   [str(e)],
             "elapsed_s": elapsed,
-            "input":     input_text,
+            "prompt":    input_text,
             "response":  ""
         }
 

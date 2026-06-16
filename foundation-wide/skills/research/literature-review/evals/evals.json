@@ -1,11 +1,10 @@
 {
-  "skill": "literature-review",
-  "version": "1.0.0",
+  "skill_name": "literature-review",
   "evals": [
     {
       "id": "lit-001",
       "name": "Produces structured output",
-      "input": "Review the literature on community health worker programs for malaria prevention in sub-Saharan Africa. Time horizon: last 10 years. Focus on RCTs and systematic reviews. This is for the background section of a grant proposal.",
+      "prompt": "Review the literature on community health worker programs for malaria prevention in sub-Saharan Africa. Time horizon: last 10 years. Focus on RCTs and systematic reviews. This is for the background section of a grant proposal.",
       "rubric": {
         "required_sections": [
           "Research question",
@@ -28,7 +27,7 @@
     {
       "id": "lit-002",
       "name": "Acknowledges knowledge gaps",
-      "input": "Review the literature on AI-assisted diagnosis in low-resource settings. Time horizon: last 5 years. Focus on clinical validation studies. This is for a policy brief on digital health.",
+      "prompt": "Review the literature on AI-assisted diagnosis in low-resource settings. Time horizon: last 5 years. Focus on clinical validation studies. This is for a policy brief on digital health.",
       "rubric": {
         "required_sections": [
           "Knowledge gap"
@@ -39,7 +38,7 @@
     {
       "id": "lit-003",
       "name": "Asks clarifying question for vague request",
-      "input": "Can you do a lit review on nutrition?",
+      "prompt": "Can you do a lit review on nutrition?",
       "rubric": {
         "pass_condition": "Agent asks at least one scoping question before producing the full review"
       }
@@ -47,7 +46,7 @@
     {
       "id": "lit-004",
       "name": "Does not claim systematic review methodology",
-      "input": "Do a systematic literature review of ivermectin for malaria prevention.",
+      "prompt": "Do a systematic literature review of ivermectin for malaria prevention.",
       "rubric": {
         "must_include_one_of": [
           "rapid review",

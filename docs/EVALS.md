@@ -50,8 +50,7 @@ Every skill directory must contain `evals/evals.json`. Two formats are accepted:
 **Wrapped format** (recommended — adds metadata):
 ```json
 {
-  "skill": "<skill-name>",
-  "version": "1.0.0",
+  "skill_name": "<skill-name>",
   "evals": [ ...cases... ]
 }
 ```
@@ -68,7 +67,7 @@ Every skill directory must contain `evals/evals.json`. Two formats are accepted:
 | `id` | ✅ | Unique identifier, e.g. `grant-001`. Use `<skill-prefix>-NNN`. |
 | `name` | ✅ | Short human-readable label shown in CI output. |
 | `description` | — | Longer explanation of what this case tests and why. |
-| `input` | ✅ | The user message sent to the skill. Plain string. |
+| `prompt` | ✅ | The user message sent to the skill. Plain string. |
 | `rubric` | ✅ | Pass/fail criteria — see Rubric fields below. |
 
 ### Rubric fields
@@ -89,14 +88,13 @@ All fields are optional but at least one must be present to be meaningful.
 
 ```json
 {
-  "skill": "grant-writing",
-  "version": "1.0.0",
+  "skill_name": "grant-writing",
   "evals": [
     {
       "id": "grant-001",
       "name": "Asks clarifying questions for a vague request",
       "description": "Vague request — agent should ask for missing context, not produce output immediately.",
-      "input": "Help me write a grant proposal.",
+      "prompt": "Help me write a grant proposal.",
       "rubric": {
         "must_include_one_of": ["funder", "what is the", "could you share", "which organization"],
         "must_not_include": ["problem statement", "theory of change"],
@@ -107,7 +105,7 @@ All fields are optional but at least one must be present to be meaningful.
       "id": "grant-002",
       "name": "Produces all required sections for a complete brief",
       "description": "Fully-specified request — agent should produce a complete proposal with all required sections.",
-      "input": "Write a grant proposal for a malaria vaccine trial in Kenya. Funder: Gates Foundation. Budget: $2M over 3 years. Target: children under 5.",
+      "prompt": "Write a grant proposal for a malaria vaccine trial in Kenya. Funder: Gates Foundation. Budget: $2M over 3 years. Target: children under 5.",
       "rubric": {
         "required_sections": ["Problem", "Approach", "Budget"],
         "must_include_groups": [
@@ -121,7 +119,7 @@ All fields are optional but at least one must be present to be meaningful.
       "id": "grant-003",
       "name": "Declines to write proposal outside scope",
       "description": "Request outside the skill's scope — agent should decline rather than attempt it.",
-      "input": "Write a grant proposal for a commercial product launch.",
+      "prompt": "Write a grant proposal for a commercial product launch.",
       "rubric": {
         "must_include_one_of": ["out of scope", "not able to", "not designed", "philanthropic", "nonprofit"],
         "pass_condition": "Agent declines or redirects — this skill is for philanthropic grants only"

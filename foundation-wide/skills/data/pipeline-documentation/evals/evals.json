@@ -1,12 +1,11 @@
 {
-  "skill": "pipeline-documentation",
-  "version": "1.0.0",
+  "skill_name": "pipeline-documentation",
   "evals": [
     {
       "id": "pipeline-001",
       "name": "Asks for input when only given a vague description",
       "description": "When the user describes a pipeline vaguely with no code, schema, or source details, the agent should ask for more information before producing documentation.",
-      "input": "Can you document our data pipeline?",
+      "prompt": "Can you document our data pipeline?",
       "rubric": {
         "must_include_one_of": [
           "could you share",
@@ -28,7 +27,7 @@
       "id": "pipeline-002",
       "name": "Produces all required output sections",
       "description": "Given a clear pipeline description, the output should include Purpose, Data Sources, Pipeline Stages, Output Schema, and Known Limitations.",
-      "input": "Document this pipeline: We pull daily active user counts from our Postgres database, join them with campaign data from a CSV file, filter to users who opted in to communications, then write the result to a BigQuery table called `marketing.active_opted_in_users`. The output has fields: user_id (integer), campaign_id (string), opted_in (boolean), last_active_date (date).",
+      "prompt": "Document this pipeline: We pull daily active user counts from our Postgres database, join them with campaign data from a CSV file, filter to users who opted in to communications, then write the result to a BigQuery table called `marketing.active_opted_in_users`. The output has fields: user_id (integer), campaign_id (string), opted_in (boolean), last_active_date (date).",
       "rubric": {
         "required_sections": [
           "Purpose",
@@ -44,7 +43,7 @@
       "id": "pipeline-003",
       "name": "Captures data quality issues when mentioned",
       "description": "When the user mentions known data quality problems, the agent should include them in the Data Quality Notes section.",
-      "input": "Document this ETL. We pull from a legacy CRM that sometimes has duplicate records. We deduplicate on email address, but about 5% of emails are null so those records get dropped. Output goes to a reporting table.",
+      "prompt": "Document this ETL. We pull from a legacy CRM that sometimes has duplicate records. We deduplicate on email address, but about 5% of emails are null so those records get dropped. Output goes to a reporting table.",
       "rubric": {
         "must_include_all": [
           "duplicate",
@@ -59,7 +58,7 @@
       "id": "pipeline-004",
       "name": "Writes a plain-English overview readable by non-technical stakeholders",
       "description": "The Purpose section should be understandable without technical knowledge — no SQL, no jargon.",
-      "input": "Document this: SELECT u.user_id, u.email, c.campaign_name FROM users u JOIN campaigns c ON u.campaign_id = c.id WHERE u.active = true AND u.consent = true INSERT INTO reporting.campaign_reach",
+      "prompt": "Document this: SELECT u.user_id, u.email, c.campaign_name FROM users u JOIN campaigns c ON u.campaign_id = c.id WHERE u.active = true AND u.consent = true INSERT INTO reporting.campaign_reach",
       "rubric": {
         "must_not_include_in_purpose": ["SELECT", "JOIN", "WHERE", "INSERT INTO"],
         "pass_condition": "The Purpose paragraph describes what the pipeline does in plain English without SQL syntax"

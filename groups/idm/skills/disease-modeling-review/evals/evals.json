@@ -1,12 +1,11 @@
 {
-  "skill": "disease-modeling-review",
-  "version": "1.0.0",
+  "skill_name": "disease-modeling-review",
   "evals": [
     {
       "id": "dmr-001",
       "name": "Asks for model context when given vague request",
       "description": "When the user asks for a review without providing model details, the agent should gather context before proceeding.",
-      "input": "Can you review my disease model?",
+      "prompt": "Can you review my disease model?",
       "rubric": {
         "must_include_one_of": [
           "disease",
@@ -26,7 +25,7 @@
       "id": "dmr-002",
       "name": "Produces structured feedback with severity sections",
       "description": "Given a model description, the output should include Critical Issues, Important Issues, and Suggestions sections.",
-      "input": "Please review this EMOD malaria model. We're modeling malaria transmission in Kenya using a simple SIR compartment structure. The model has susceptible, infected, and recovered states. We calibrated to 2019 incidence data from DHIS2. Parameters were estimated from literature. The research question is: what is the impact of bed net distribution on malaria incidence over 5 years?",
+      "prompt": "Please review this EMOD malaria model. We're modeling malaria transmission in Kenya using a simple SIR compartment structure. The model has susceptible, infected, and recovered states. We calibrated to 2019 incidence data from DHIS2. Parameters were estimated from literature. The research question is: what is the impact of bed net distribution on malaria incidence over 5 years?",
       "rubric": {
         "required_sections": ["Critical", "Important", "Suggestions"],
         "pass_condition": "Output contains Critical Issues, Important Issues, and Suggestions sections with substantive feedback"
@@ -36,7 +35,7 @@
       "id": "dmr-003",
       "name": "Flags missing biological mechanisms for malaria SIR model",
       "description": "A simple SIR model for malaria is missing key biological mechanisms. The agent should flag this as a critical or important issue.",
-      "input": "Review this malaria model: We use a basic SIR (Susceptible-Infected-Recovered) model for malaria in sub-Saharan Africa. No immunity waning, no vector dynamics, no age structure. We're using it to estimate burden for a policy brief.",
+      "prompt": "Review this malaria model: We use a basic SIR (Susceptible-Infected-Recovered) model for malaria in sub-Saharan Africa. No immunity waning, no vector dynamics, no age structure. We're using it to estimate burden for a policy brief.",
       "rubric": {
         "must_include_one_of": [
           "vector",
@@ -55,7 +54,7 @@
       "id": "dmr-004",
       "name": "Flags missing calibration details",
       "description": "When calibration method and goodness-of-fit information is absent, the agent should flag this under parameterization or calibration review.",
-      "input": "Review my model: EMOD HIV model for Zambia, calibrated to UNAIDS data. Parameters from WHO reports. Research question: impact of PrEP scale-up on HIV incidence 2025-2035.",
+      "prompt": "Review my model: EMOD HIV model for Zambia, calibrated to UNAIDS data. Parameters from WHO reports. Research question: impact of PrEP scale-up on HIV incidence 2025-2035.",
       "rubric": {
         "must_include_one_of": [
           "goodness-of-fit",
