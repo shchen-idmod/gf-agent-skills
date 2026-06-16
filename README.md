@@ -62,12 +62,12 @@ Requires **1 approval** from your team lead.
 ### Claude Code (install via marketplace)
 ```bash
 # Add this marketplace once
-/plugin marketplace add gatesfoundation/bmgf-agent-skills
+/plugin marketplace add gatesfoundation/gf-agent-skills
 
 # Install by group
-/plugin install foundation-wide-skills@bmgf-agent-skills
-/plugin install idm-skills@bmgf-agent-skills
-/plugin install global-health-skills@bmgf-agent-skills
+/plugin install foundation-wide-skills@gf-agent-skills
+/plugin install idm-skills@gf-agent-skills
+/plugin install global-health-skills@gf-agent-skills
 ```
 
 ### Claude.ai (upload via UI)
@@ -102,7 +102,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) and [docs/SKILL_TEMPLATE.md](docs/SKILL_T
 ## Repository Structure
 
 ```
-bmgf-agent-skills/
+gf-agent-skills/
 ├── .claude-plugin/
 │   └── marketplace.json              ← Claude Code marketplace registry
 │

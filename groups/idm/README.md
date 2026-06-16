@@ -5,7 +5,7 @@ Reusable Claude skills scoped to Institute for Disease Modeling (IDM) workflows 
 ## Install
 
 ```
-/plugin install idm-skills@bmgf-agent-skills
+/plugin install idm-skills@gf-agent-skills
 ```
 
 ## Skills
