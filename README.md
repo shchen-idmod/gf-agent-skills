@@ -20,9 +20,12 @@ Available to all GF staff regardless of team or domain.
 
 ### Group Skills
 
-| Skill | Group | Owner |
-|---|---|---|
-| [disease-modeling-review](groups/idm/skills/disease-modeling-review/) | IDM | IDM |
+| Skill | Group | Category | Owner |
+|---|---|---|---|
+| [disease-modeling-review](groups/idm/skills/disease-modeling-review/) | IDM | Disease Modeling | IDM |
+| [python-code-reviewer](groups/idm/skills/software-tools/python-code-reviewer/) | IDM | Software Tools | IDM |
+| [python-code-fixer](groups/idm/skills/software-tools/python-code-fixer/) | IDM | Software Tools | IDM |
+| [idm-pkg-install](groups/idm/skills/software-tools/idm-pkg-install/) | IDM | Software Tools | IDM |
 
 ---
 
@@ -126,7 +129,11 @@ gf-agent-skills/
 │   ├── idm/
 │   │   ├── .claude-plugin/plugin.json
 │   │   └── skills/
-│   │       └── disease-modeling-review/
+│   │       ├── disease-modeling-review/
+│   │       └── software-tools/
+│   │           ├── python-code-reviewer/
+│   │           ├── python-code-fixer/
+│   │           └── idm-pkg-install/
 │   ├── global-health/                ← empty, ready for contributions
 │   ├── global-development/
 │   ├── policy/
