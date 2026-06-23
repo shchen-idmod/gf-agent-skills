@@ -54,6 +54,48 @@ Valid group names: `idm`, `global-health`, `global-development`, `policy`, `fina
 
 ---
 
+## Using skills in your own repo (Git Submodule)
+
+If you want to use GF skills inside your own project repo rather than installing them via the marketplace, you can add this repo as a Git submodule.
+
+**Add the submodule:**
+```bash
+git submodule add https://github.com/gatesfoundation/gf-agent-skills.git .claude/skills/gf-agent-skills
+git commit -m "Add gf-agent-skills as submodule"
+git push
+```
+
+**After cloning a repo that already has the submodule:**
+```bash
+git submodule update --init --recursive
+```
+
+**Reference only the skills you need in your repo's `CLAUDE.md`:**
+```markdown
+## Skills
+- .claude/skills/gf-agent-skills/foundation-wide/skills/research/literature-review/SKILL.md
+- .claude/skills/gf-agent-skills/groups/idm/skills/software-tools/python-code-reviewer/SKILL.md
+```
+
+**Keep skills up to date:**
+```bash
+git submodule update --remote --merge
+git commit -m "Update gf-agent-skills to latest"
+git push
+```
+
+> **Tip:** Automate updates via Dependabot by adding this to your repo's `.github/dependabot.yml`:
+> ```yaml
+> version: 2
+> updates:
+>   - package-ecosystem: "gitsubmodules"
+>     directory: "/"
+>     schedule:
+>       interval: "weekly"
+> ```
+
+---
+
 ## Running evals
 
 ```bash
