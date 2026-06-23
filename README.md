@@ -29,6 +29,72 @@ Available to all GF staff regardless of team or domain.
 
 ---
 
+## Deployment
+
+### Claude Code (install via marketplace)
+```bash
+# Add this marketplace once
+/plugin marketplace add gatesfoundation/gf-agent-skills
+
+# Install by group
+/plugin install foundation-wide-skills@gf-agent-skills
+/plugin install idm-skills@gf-agent-skills
+/plugin install global-health-skills@gf-agent-skills
+```
+
+### Claude.ai (upload via UI)
+```bash
+# Package skills as ZIPs
+python scripts/deploy.py --package --plugin foundation-wide
+python scripts/deploy.py --package --plugin idm
+```
+Then upload ZIPs at:
+- **Personal:** `claude.ai → Settings → Customize → Skills → Upload skill`
+- **Org-wide (Team/Enterprise):** `claude.ai → Organization Settings → Skills → Upload`
+
+See [docs/claude-ai-deployment.md](docs/claude-ai-deployment.md) for the full guide including updates and troubleshooting.
+
+### Git Submodule (for repo-level integration)
+Use this approach when you want to pull specific GF skills directly into your own repository — useful for Claude Code users who work within a project repo.
+
+**Add the submodule to your repo:**
+```bash
+git submodule add https://github.com/gatesfoundation/gf-agent-skills.git .claude/skills/gf-agent-skills
+git commit -m "Add gf-agent-skills as submodule"
+git push
+```
+
+**After cloning a repo that already has the submodule:**
+```bash
+git submodule update --init --recursive
+```
+
+**Reference only the skills you need in your `CLAUDE.md`:**
+```markdown
+## Skills
+- .claude/skills/gf-agent-skills/foundation-wide/skills/research/literature-review/SKILL.md
+- .claude/skills/gf-agent-skills/groups/idm/skills/software-tools/python-code-reviewer/SKILL.md
+```
+
+**Keep your skills up to date:**
+```bash
+git submodule update --remote --merge
+git commit -m "Update gf-agent-skills to latest"
+git push
+```
+
+> **Tip:** You can also automate updates via Dependabot by adding this to `.github/dependabot.yml`:
+> ```yaml
+> version: 2
+> updates:
+>   - package-ecosystem: "gitsubmodules"
+>     directory: "/"
+>     schedule:
+>       interval: "weekly"
+> ```
+
+---
+
 ## Where Does My Skill Go?
 
 ### Foundation-Wide (`foundation-wide/skills/<category>/`)
@@ -57,33 +123,6 @@ For skills scoped to a specific GF team or program.
 | `it/` | IT & Engineering |
 
 Requires **1 approval** from your team lead.
-
----
-
-## Deployment
-
-### Claude Code (install via marketplace)
-```bash
-# Add this marketplace once
-/plugin marketplace add gatesfoundation/gf-agent-skills
-
-# Install by group
-/plugin install foundation-wide-skills@gf-agent-skills
-/plugin install idm-skills@gf-agent-skills
-/plugin install global-health-skills@gf-agent-skills
-```
-
-### Claude.ai (upload via UI)
-```bash
-# Package skills as ZIPs
-python scripts/deploy.py --package --plugin foundation-wide
-python scripts/deploy.py --package --plugin idm
-```
-Then upload ZIPs at:
-- **Personal:** `claude.ai → Settings → Customize → Skills → Upload skill`
-- **Org-wide (Team/Enterprise):** `claude.ai → Organization Settings → Skills → Upload`
-
-See [docs/claude-ai-deployment.md](docs/claude-ai-deployment.md) for the full guide including updates and troubleshooting.
 
 ---
 
