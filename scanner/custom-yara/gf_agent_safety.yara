@@ -147,9 +147,9 @@ rule vetter_browser_data_theft {
             // browser DB file + sqlite
             $sqlite_cookies or
 
-            // browser DB file name + browser path (must co-occur)
+            // browser DB / storage file name + browser path (must co-occur)
             (
-                ($cookies_db or $login_data or $web_data) and
+                ($cookies_db or $login_data or $web_data or $local_storage or $session_storage) and
                 ($chrome_path or $firefox_path or $mac_chrome or $chromium_path)
             )
         )
