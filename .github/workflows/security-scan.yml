@@ -1,0 +1,56 @@
+name: Security scan
+
+# Scans changed skills for security red flags (data exfiltration, credential
+# access, agent-memory theft, silent installs, etc.) using Cisco's
+# cisco-ai-skill-scanner. Runs static + behavioral analysis (no API key needed);
+# LLM semantic analysis is optional (see docs/SECURITY-SCANNING.md).
+#
+# Mark "Scan skills for security red flags" as a required status check in
+# branch protection to block merges on HIGH findings.
+
+on:
+  pull_request:
+    paths:
+      - 'foundation-wide/skills/**'
+      - 'groups/**/skills/**'
+  push:
+    branches: [main]
+    paths:
+      - 'foundation-wide/skills/**'
+      - 'groups/**/skills/**'
+
+permissions:
+  contents: read
+  security-events: write   # required to upload SARIF to code scanning
+
+jobs:
+  scan:
+    name: Scan skills for security red flags
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install scanner
+        run: pip install cisco-ai-skill-scanner
+
+      - name: Scan skills (static + behavioral; fail on HIGH)
+        run: |
+          # NOTE: confirm the exact output flag with `skill-scanner scan-all --help`
+          # on first run — some versions use `--output`, others redirect stdout.
+          skill-scanner scan-all . \
+            --recursive \
+            --check-overlap \
+            --use-behavioral \
+            --format sarif \
+            --output results.sarif \
+            --fail-on-severity high
+
+      - name: Upload SARIF to code scanning
+        if: always()   # upload findings even when the scan fails the build
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: results.sarif

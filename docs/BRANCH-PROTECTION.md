@@ -29,6 +29,7 @@ gh api -X PUT repos/<ORG>/gf-agent-skills/branches/main/protection --input - <<'
     "contexts": [
       "Validate skill structure and metadata",
       "Run evals for changed skills",
+      "Scan skills for security red flags",
       "Path-based approval count"
     ]
   },
