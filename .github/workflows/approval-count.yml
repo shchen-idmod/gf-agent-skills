@@ -1,0 +1,37 @@
+name: Approval count
+
+# Path-aware approval gate: 2 approvals for foundation-wide changes, 1 for group.
+# Complements branch protection (which enforces code-owner review but only a
+# single global count). Mark "Path-based approval count" as a required status
+# check in branch protection for this to block merges.
+
+on:
+  pull_request_review:
+    types: [submitted, dismissed]
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'foundation-wide/skills/**'
+      - 'groups/**/skills/**'
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  check:
+    name: Path-based approval count
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Check approval count
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: python scripts/check_approvals.py

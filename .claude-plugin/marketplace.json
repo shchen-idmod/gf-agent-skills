@@ -1,5 +1,5 @@
 {
-  "name": "gf-foundation-skills",
+  "name": "gf-agent-skills",
   "owner": {
     "name": "Gates Foundation AI Skills",
     "email": "gf-ai-skills@gatesfoundation.org"
@@ -18,31 +18,6 @@
       "name": "idm-skills",
       "description": "IDM group skills: disease modeling and epidemiology research.",
       "source": "./groups/idm"
-    },
-    {
-      "name": "global-health-skills",
-      "description": "Global Health group skills.",
-      "source": "./groups/global-health"
-    },
-    {
-      "name": "global-development-skills",
-      "description": "Global Development group skills.",
-      "source": "./groups/global-development"
-    },
-    {
-      "name": "policy-skills",
-      "description": "Policy group skills.",
-      "source": "./groups/policy"
-    },
-    {
-      "name": "finance-skills",
-      "description": "Finance group skills.",
-      "source": "./groups/finance"
-    },
-    {
-      "name": "it-skills",
-      "description": "IT group skills.",
-      "source": "./groups/it"
     }
   ]
 }
