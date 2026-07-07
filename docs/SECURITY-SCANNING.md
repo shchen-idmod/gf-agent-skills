@@ -48,6 +48,23 @@ Findings appear as inline PR annotations (via SARIF → GitHub Code Scanning) an
 The CI job uploads SARIF, so results appear under the repo's **Security → Code scanning** tab and
 as inline comments on the PR diff.
 
+## Finding categories
+
+Each finding is tagged with a category. Use these when triaging scan output and when assigning a
+`category` to any custom rule you add:
+
+| category | Meaning |
+|----------|---------|
+| `prompt_injection` | Prompt injection and instruction override |
+| `command_injection` | Command and code injection |
+| `data_exfiltration` | Data exfiltration and privacy violations |
+| `unauthorized_tool_use` | Unauthorized tool use and permission abuse |
+| `obfuscation` | Code obfuscation and malware indicators |
+| `hardcoded_secrets` | Hardcoded secrets and credential leakage |
+| `social_engineering` | Social engineering and misleading metadata |
+| `resource_abuse` | Resource abuse and denial of service |
+| `policy_violation` | Policy violation |
+
 ## Custom foundation rules
 
 The built-in rules cover most red flags. We add a small set of foundation-specific YARA rules in
