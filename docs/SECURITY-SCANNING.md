@@ -48,17 +48,31 @@ Findings appear as inline PR annotations (via SARIF → GitHub Code Scanning) an
 The CI job uploads SARIF, so results appear under the repo's **Security → Code scanning** tab and
 as inline comments on the PR diff.
 
-## Extending with foundation-specific rules
+## Custom foundation rules
 
-The built-in rules already cover most of the common red flags. Add custom rules only for gaps
-specific to us (e.g. references to internal data paths, GF-confidential markers). The scanner
-supports custom local rule paths via its `custom-rules` interface — see the scanner's
-`docs/custom-rules.md`. A starting set of agent-safety rules (agent-memory access, IP exfiltration,
-browser-data theft) was prototyped in `skillhub/scanner/examples/vetter-rules/` and can be ported
-if the built-in rules don't already cover them.
+The built-in rules cover most red flags. We add a small set of foundation-specific YARA rules in
+`scanner/custom-yara/gf_agent_safety.yara`, loaded via `--custom-rules scanner/custom-yara` (see
+the workflow). They cover three checks that are especially relevant to us and not in the built-in
+set:
 
-> Prefer built-in, maintained rules over hand-written regexes. Only add custom rules for genuine
-> gaps, and keep them under version control with a comment explaining the threat each addresses.
+- **`vetter_agent_memory_theft`** — a skill reading agent memory/identity files (`MEMORY.md`,
+  `.claude/memory`, `claude_desktop_config.json`, …). Claude-specific and high value.
+- **`vetter_ip_exfiltration`** — network calls to raw IPs (bypasses DNS logging), excluding private ranges.
+- **`vetter_browser_data_theft`** — access to browser cookies / saved-login / profile databases.
+
+These were derived from the [skill-vetter](https://clawhub.ai/spclaudehome/skill-vetter) RED FLAGS.
+
+### Why only YARA (not the regex signatures)
+
+The CLI's `--custom-rules` flag loads **YARA** rules only; custom regex signatures use a separate
+`--rule-packs` mechanism (packaged packs, not loose YAML). The remaining skill-vetter regex rules
+(curl/wget, credential prompts, system-file writes, silent installs, base64/eval/exec, sudo,
+obfuscation) overlap with the scanner's **built-in** signature + behavioral engines, so we rely on
+those rather than maintaining our own regexes.
+
+> Before adding more custom rules, confirm the built-in set doesn't already cover the gap (run the
+> scanner on a test skill). Add YARA rules for genuine gaps only, each with a comment explaining the
+> threat it addresses.
 
 ## First-run checklist
 

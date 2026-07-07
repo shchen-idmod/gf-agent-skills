@@ -45,6 +45,7 @@ jobs:
             --recursive \
             --check-overlap \
             --use-behavioral \
+            --custom-rules scanner/custom-yara \
             --format sarif \
             --output results.sarif \
             --fail-on-severity high
