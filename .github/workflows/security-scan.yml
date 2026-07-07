@@ -13,11 +13,16 @@ on:
     paths:
       - 'foundation-wide/skills/**'
       - 'groups/**/skills/**'
+      - 'scanner/**'
+      - '.github/workflows/security-scan.yml'
   push:
     branches: [main]
     paths:
       - 'foundation-wide/skills/**'
       - 'groups/**/skills/**'
+      - 'scanner/**'
+      - '.github/workflows/security-scan.yml'
+  workflow_dispatch:   # allow manual re-run from the Actions tab
 
 permissions:
   contents: read
