@@ -39,8 +39,9 @@ Available to all GF staff regardless of team or domain.
 # Install by group
 /plugin install foundation-wide-skills@gf-agent-skills
 /plugin install idm-skills@gf-agent-skills
-/plugin install global-health-skills@gf-agent-skills
 ```
+
+New to this? See the step-by-step [Getting Started guide](docs/GETTING-STARTED.md).
 
 ### Claude.ai (upload via UI)
 ```bash

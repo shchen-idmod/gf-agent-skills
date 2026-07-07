@@ -1,0 +1,31 @@
+# CODEOWNERS — required reviewers per path.
+#
+# This only takes effect when branch protection on `main` has
+# "Require review from Code Owners" enabled (see docs/BRANCH-PROTECTION.md).
+#
+# PREREQUISITE: the @gatesfoundation/* teams below must exist, which requires
+# this repo to live in the gatesfoundation GitHub org (personal repos can't
+# use org teams). Replace the org/team handles with the real ones.
+#
+# NOTE: CODEOWNERS controls WHO must approve, not HOW MANY. The approval
+# *count* (2 for foundation-wide, 1 for group) is set in branch protection and
+# is a single value per branch — see docs/BRANCH-PROTECTION.md for how we
+# reconcile the two-tier requirement.
+
+# --- Catalog-level / process files → Skills Working Group ---
+/.github/                @gatesfoundation/skills-working-group
+/.claude-plugin/         @gatesfoundation/skills-working-group
+/scripts/                @gatesfoundation/skills-working-group
+/CONTRIBUTING.md         @gatesfoundation/skills-working-group
+/README.md               @gatesfoundation/skills-working-group
+
+# --- Foundation-wide skills → Skills Working Group (policy: 2 approvals) ---
+/foundation-wide/        @gatesfoundation/skills-working-group
+
+# --- Group skills → the owning group's leads (policy: 1 approval) ---
+/groups/idm/                 @gatesfoundation/idm-leads
+/groups/global-health/       @gatesfoundation/global-health-leads
+/groups/global-development/  @gatesfoundation/global-development-leads
+/groups/policy/              @gatesfoundation/policy-leads
+/groups/finance/             @gatesfoundation/finance-leads
+/groups/it/                  @gatesfoundation/it-leads
